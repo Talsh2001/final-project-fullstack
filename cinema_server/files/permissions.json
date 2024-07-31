@@ -1,0 +1,36 @@
+{
+  "permissions": [
+    {
+      "userId": "664f4ade353f2c45be38bfc4",
+      "permissions": [
+        "Admin"
+      ]
+    },
+    {
+      "userId": "664f4aef353f2c45be38bfc5",
+      "permissions": [
+        "viewMembers",
+        "createMembers"
+      ]
+    },
+    {
+      "userId": "664f4afc353f2c45be38bfc6",
+      "permissions": [
+        "viewMembers",
+        "viewMovies",
+        "createMembers",
+        "updateMembers"
+      ]
+    },
+    {
+      "userId": "664f4d6be042146e3ff55c3b",
+      "permissions": [
+        "viewMovies",
+        "deleteMovies",
+        "updateMovies",
+        "createMovies",
+        "viewMembers"
+      ]
+    }
+  ]
+}

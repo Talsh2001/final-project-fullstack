@@ -130,7 +130,6 @@ const Movie = ({ movie, isEditVisible, isDeleteVisible }) => {
             <Box
               sx={{
                 padding: 2,
-                // border: "3px solid black",
                 width: 300,
               }}
             >

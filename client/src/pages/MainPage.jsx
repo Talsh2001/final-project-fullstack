@@ -141,11 +141,7 @@ const MainPage = () => {
 
   return (
     <>
-      <AppBar
-      // sx={{
-      //   bgcolor: { lg: "pink", md: "lightgreen", sm: "lightblue", xs: "lightcoral" },
-      // }}
-      >
+      <AppBar>
         <Toolbar
           sx={{
             display: "block",

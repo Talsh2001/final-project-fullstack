@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
 import Login from "./pages/Login";
 import CreateAccount from "./pages/CreateAccount";
 import MainPage from "./pages/MainPage";

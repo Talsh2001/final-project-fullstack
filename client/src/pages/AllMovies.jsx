@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import Movie from "../components/Movie";
 
@@ -10,18 +10,16 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 const AllMovies = () => {
   const movies = useSelector((state) => state.movies);
 
-  const dispatch = useDispatch();
-
   const [isVisible, setIsVisible] = useState(true);
   const [unauthorized, setUnauthorized] = useState(false);
   const [isEditVisible, setIsEditVisible] = useState("");
   const [isDeleteVisible, setIsDeleteVisible] = useState("");
   const [findText, setFindText] = useState("");
 
-  const accessToken = sessionStorage.getItem("accessToken");
-
   const location = useLocation();
   const movieName = location.state?.movieName;
+
+  const filteredMovies = movies.filter((movie) => movie.name.includes(movieName));
 
   useEffect(() => {
     const fetchUserPermissions = async () => {
@@ -66,28 +64,6 @@ const AllMovies = () => {
     };
     fetchUserPermissions();
   }, []);
-
-  const findMovies = async (searchText) => {
-    const { data: moviesDB } = await axios.get("http://localhost:8000/movies", {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-
-    const filteredMovies = moviesDB.filter((movie) => movie.name.includes(searchText));
-
-    dispatch({ type: "REPLACE_MOVIES_FIND", payload: filteredMovies });
-  };
-
-  useEffect(() => {
-    const fetchMovie = async () => {
-      if (movieName) {
-        setFindText(movieName);
-        await findMovies(movieName);
-      }
-    };
-    fetchMovie();
-  }, [movieName]);
 
   const isXs = useMediaQuery((theme) => theme.breakpoints.up("xs"));
   const isSm = useMediaQuery((theme) => theme.breakpoints.up("sm"));
@@ -151,14 +127,14 @@ const AllMovies = () => {
           }}
           size="small"
           variant="contained"
-          onClick={() => findMovies(findText)}
+          onClick={() => setFindText(findText)}
         >
           Find
         </Button>
       </Box>
       {isVisible && (
         <Box>
-          {movies.map((movie) => {
+          {filteredMovies.map((movie) => {
             return (
               <Movie
                 key={movie._id}

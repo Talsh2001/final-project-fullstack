@@ -21,14 +21,13 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 const Member = ({ member, isEditVisible, isDeleteVisible }) => {
   const subscriptions = useSelector((state) => state.subscriptions);
   const movies = useSelector((state) => state.movies);
-
   const memberSubscriptions = subscriptions.find((sub) => sub.memberId === member._id);
 
   const accessToken = sessionStorage.getItem("accessToken");
 
   const navigate = useNavigate();
 
-  const currentDate = new Date().toISOString().split("T")[0]; // Get today's date in "YYYY-MM-DD" format
+  const currentDate = new Date().toISOString().split("T")[0];
 
   const [newMovieDiv, setNewMovieDiv] = useState(false);
   const [date, setDate] = useState(currentDate);
@@ -37,7 +36,7 @@ const Member = ({ member, isEditVisible, isDeleteVisible }) => {
     (m) => !memberSubscriptions?.movies.some((subMovie) => subMovie.movieId === m._id)
   );
 
-  const [movieName, setMovieName] = useState(newMovies[0].name);
+  const [movieName, setMovieName] = useState(newMovies[0]?.name);
 
   const currentMovie = movies.find((m) => m.name === movieName);
 

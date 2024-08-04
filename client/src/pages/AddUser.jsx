@@ -9,7 +9,7 @@ const AddUser = () => {
 
   const currentDate = new Date();
   const year = currentDate.getFullYear();
-  const month = currentDate.getMonth() + 1; // Months are zero-indexed, so add 1
+  const month = currentDate.getMonth() + 1;
   const day = currentDate.getDate();
 
   const [userData, setUserData] = useState({

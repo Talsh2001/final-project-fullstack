@@ -15,11 +15,19 @@ const AllMovies = () => {
   const [isEditVisible, setIsEditVisible] = useState("");
   const [isDeleteVisible, setIsDeleteVisible] = useState("");
   const [findText, setFindText] = useState("");
+  const [filteredMovies, setFilteredMovies] = useState([]);
 
   const location = useLocation();
   const movieName = location.state?.movieName;
 
-  const filteredMovies = movies.filter((movie) => movie.name.includes(movieName));
+  useEffect(() => {
+    // Initial filter by movieName if it's present
+    const initialFilteredMovies = movieName
+      ? movies.filter((movie) => movie.name.includes(movieName))
+      : movies;
+
+    setFilteredMovies(initialFilteredMovies);
+  }, [movies, movieName]);
 
   useEffect(() => {
     const fetchUserPermissions = async () => {
@@ -64,6 +72,17 @@ const AllMovies = () => {
     };
     fetchUserPermissions();
   }, []);
+
+  const handleFindMovies = () => {
+    // Apply filtering based on both movieName and findText
+    const filtered = movies
+      .filter((movie) => (movieName ? movie.name.includes(movieName) : true))
+      .filter((movie) =>
+        findText ? movie.name.toLowerCase().includes(findText.toLowerCase()) : true
+      );
+
+    setFilteredMovies(filtered);
+  };
 
   const isXs = useMediaQuery((theme) => theme.breakpoints.up("xs"));
   const isSm = useMediaQuery((theme) => theme.breakpoints.up("sm"));
@@ -127,7 +146,7 @@ const AllMovies = () => {
           }}
           size="small"
           variant="contained"
-          onClick={() => setFindText(findText)}
+          onClick={handleFindMovies}
         >
           Find
         </Button>

@@ -1,32 +1,18 @@
 {
   "users": [
     {
-      "id": "664f4ade353f2c45be38bfc4",
+      "id": "686d82d83a3fa10acab03067",
       "firstName": "Tal",
       "lastName": "Shalev",
       "CreatedDate": "12.5.2024",
       "sessionTimeOut": "60"
     },
     {
-      "id": "664f4aef353f2c45be38bfc5",
+      "id": "686d82e73a3fa10acab03068",
       "firstName": "Percy",
       "lastName": "Jackson",
       "CreatedDate": "18.5.2024",
       "sessionTimeOut": "20"
-    },
-    {
-      "id": "664f4afc353f2c45be38bfc6",
-      "firstName": "Jane",
-      "lastName": "Doe",
-      "CreatedDate": "21.5.2024",
-      "sessionTimeOut": "30"
-    },
-    {
-      "id": "664f4d6be042146e3ff55c3b",
-      "firstName": "John",
-      "lastName": "Doe",
-      "CreatedDate": "23.5.2024",
-      "sessionTimeOut": "30"
     }
   ]
 }
